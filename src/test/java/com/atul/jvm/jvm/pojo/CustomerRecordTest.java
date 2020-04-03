@@ -44,4 +44,27 @@ class CustomerRecordTest  {
         }
 
     }
+
+
+    @Test
+    void test() {
+
+        String one = "hello";
+        String two = "hello";
+
+        if (one == two) {
+            System.out.println("same");
+        } else {
+            System.out.println("diff");
+        }
+    }
+
+    @Test
+    void test_3() {
+        try {
+            throw new RuntimeException("dd");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
