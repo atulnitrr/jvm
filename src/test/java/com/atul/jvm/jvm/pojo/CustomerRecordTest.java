@@ -2,6 +2,7 @@ package com.atul.jvm.jvm.pojo;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.omg.SendingContext.RunTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -66,5 +67,25 @@ class CustomerRecordTest  {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    void test_memory() {
+        final Runtime runtime = Runtime.getRuntime();
+        final long memory = runtime.freeMemory();
+        System.out.println( "Free memory --> " + ( memory / 1024)/1024 + " MB");
+        for (int i = 0; i < 10000000; i++) {
+            final Customer customer = new Customer("John");
+        }
+
+        final long memor2 = runtime.freeMemory();
+        System.out.println( "Free memory --> " + ( memor2 / 1024)/1024 + " MB");
+
+        System.gc();
+
+        final long memor3 = runtime.freeMemory();
+        System.out.println( "Free memory --> " + ( memor3 / 1024)/1024 + " MB");
+
+
     }
 }
